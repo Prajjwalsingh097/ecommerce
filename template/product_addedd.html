@@ -1,0 +1,62 @@
+{% extends 'welcomeseller.html' %}  
+
+{% block 'categories' %}
+<div class="row">
+ 
+  <div class="col-lg-3">
+    <br>
+     
+              
+    <form class="example" method="post" style="margin:auto;max-width:300px">
+      {% csrf_token %}
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+     <div class="list-group">
+      {% for x in cat %}
+    <a href="{% url 'category' id=x.id %}" class="list-group-item">{{x.catname}}</a>
+      {% endfor %}
+  </div>
+
+  </div>
+ 
+  {% endblock %}
+
+
+{% block 'products' %}
+<div class="row">
+  
+    <script>
+         setTimeout(function(){
+        document.getElementById('msg').style.display = 'none';
+    }, 10000);
+
+           
+        </script>
+    <h2 id="msg" class="container text-center text-warning ">
+        Product Added Successfully <hr noshade="red"> <br>
+    </h2>
+
+      
+    {% for x in products %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="{{x.pro_img.url}}"  alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">{{x.name}}</a>
+            </h4>
+            <h5>{{x.price}}</h5>
+            <p class="card-text">{{x.desc}}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      
+    
+    </div>
+    {% endblock %}
+    

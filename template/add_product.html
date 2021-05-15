@@ -1,0 +1,47 @@
+{% extends 'welcomeseller.html' %}  
+
+
+       
+{% block 'products' %}
+<div class="container">
+        <br>
+        <h2 class="text-light bg-dark container"> Add Product <hr noshade="red"></h2>
+      
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <!--
+        {% for x in categories %}
+        <span> {{x}} <br></span>
+        {% endfor %}
+            --> 
+                    <input type="text" name="name" class="text-dark form-control form-control-lg" placeholder="Enter Product Name*"> <br>
+                <input type="text" name="desc" class="text-dark form-control form-control-lg" placeholder="Enter Product Description*">  <br>
+                <input type="text" name="price" class="text-dark form-control form-control-lg" placeholder="Product Price*"> <br>
+                <input type="number" name="qty" class="text-dark form-control form-control-lg" placeholder="Quantity*"> <br>
+                <input type="file" name="img" class="text-dark form-control form-control-lg" placeholder="Select Product Image*"> <br>
+
+                <select name="cat" class="text-dark form-control form-control-lg">
+                    <option value="">
+                        Select Category
+                    </option>
+                    {% for x in cat %}
+                    <option value="{{ x.catname }}" >
+                        {{x.catname}}
+                    </option>
+                    {% endfor %}
+                </select>
+                <br>
+                <h3 class="bg-dark test-light text-muted text-center"  ><hr noshade="warning"> </h3>
+                
+                <input type="submit" value="Add Product" class="btn btn-lg btn-warning text-light form-control form-control-lg ">
+                <br>
+                <br>
+                <br>
+                <br>
+        
+    </form>
+</div>
+</div>
+
+{% endblock %}

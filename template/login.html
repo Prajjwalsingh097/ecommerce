@@ -1,0 +1,77 @@
+{% extends 'index.html' %} 
+
+
+
+
+
+
+
+<div class="container">
+
+   
+    
+      
+       <!-- /.col-lg-3 -->
+       {% block 'body' %}
+
+      <div class="col-lg-9">
+        <br>
+        <br>
+       
+
+        <h2 class="text-light bg-dark container"> Login <hr noshade="red"></h2>
+        <form method="post" class="form ">
+            {% csrf_token %}
+        
+            <input type="text" name="name" class="text-dark form-control form-control-lg" placeholder="Enter Username*"> <br>
+            <input type="password" name="password" class="text-dark form-control form-control-lg" placeholder="Enter Password*"> <br>
+            <hr noshade="white">
+            <input type="submit" class="btn btn-lg btn-warning text-light form-control form-control-lg" value="Login">
+        
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        
+        
+        
+        </form>
+       
+        {% block 'products' %}
+        <div class="row">
+          
+        {% for x in products %}
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="{{x.pro_img.url}}"  alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">{{x.name}}</a>
+                </h4>
+                <h5>{{x.price}}</h5>
+                <p class="card-text">{{x.desc}}</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+        
+        </div>
+        {% endblock %}
+            <!-- /.row -->
+
+      </div>
+      {% endblock %}
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+
+
