@@ -90,7 +90,7 @@ def signup(request):
 
     cat=Category.objects.all()
     products=Product.objects.all()
-    
+    '''    
     if request.method=='POST':
         
         key=request.POST['search']
@@ -106,7 +106,8 @@ def signup(request):
 
 
         return render(request,"searchResult.html",{'cat':cat,'products':p})
-    
+    ''' 
+
     if request.method=="POST":
         fn=request.POST['fname']
         ln=request.POST['Lname']

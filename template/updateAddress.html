@@ -1,0 +1,65 @@
+{% extends 'buyerbase.html' %} 
+        
+          
+           <!-- /.col-lg-3 -->
+           {% block 'body' %}
+      <div class="container">
+    
+          <div class="col-lg-9">
+            <br>
+            <br>
+           
+    
+            <h2 class="text-light bg-dark container"> Address Details <hr noshade="red"></h2>
+            <form method="post" class="form ">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                    <input type="text" name="add1" class="text-dark form-control form-control-lg" placeholder="Address Line 1*" required> <br>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                    
+                    <input type="text" name="add2" class="text-dark form-control form-control-lg" placeholder="Address Line 2"> <br>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                
+                        <input type="text" name="pincode" pattern="[0-9]{*}" class="text-dark form-control form-control-lg" placeholder="Area Pin Code*" required><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">          
+                        <input type="text" name="city" class="text-dark form-control form-control-lg" placeholder="City*" required><br>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <input type="text" name="landmark"  class="text-dark form-control form-control-lg" placeholder="Landmark*" required> <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">          
+                        <input type="text" name="state" class="text-dark form-control form-control-lg" placeholder="State*" required> <br>
+                    </div>
+                 
+                </div>
+            <input type="text" name="mobile" pattern="[0-9]{10}" class="text-dark form-control form-control-lg" placeholder="Mobile [10 Digit]*" required> <br>
+            
+           
+            
+            
+            
+            <input type="submit" class="btn btn-lg btn-warning text-light form-control form-control-lg " value="Add Address">
+            
+            </form>
+            <br>
+           
+          </div>
+          </div>
+          
+          {% endblock %}
+          <!-- /.col-lg-9 -->
+    
+        <!-- /.row -->
+    
+    
+    

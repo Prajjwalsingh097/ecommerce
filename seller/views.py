@@ -23,7 +23,52 @@ from django.contrib.auth.decorators import login_required
 '''
 
 @login_required
+def category(request,id):
+
+    uobj=userProfile.objects.get(username=request.user)
+    print(id)
+    try:
+        cat=Category.objects.all()
+        print(id)
+
+        myCursor = connection.cursor()
+        myCursor.execute("SELECT * FROM seller_product WHERE seller_product.category_id = '{}'".format(id))
+        product=list(myCursor.fetchall())
+        
+        
+        print(product)
+        products=[]
+        for x in product:
+            products.append(Product.objects.get(id=x[0]))
+        
+        print(products)
+
+        return render(request, "welcomeseller.html",{'uobj':uobj,'cat':cat,'products':products})
+    except:
+        cat=Category.objects.all()
+        products=Product.objects.all()
+
+        return render(request, "welcomeseller.html",{'uobj':uobj,'cat':cat,'products':products})
+
+
+@login_required
+
+# User profile update n all
+@login_required
+def profile(request):
+    uobj=userProfile.objects.get(user__username=request.user)
+
+    
+    addressObj=AddressDetails.objects.filter(user_id=uobj.id)
+    print(" Is that Exist : ",addressObj)
+    return render(request,"profile.html", {'uobj':uobj,'Address':addressObj })
+
+
+
+@login_required
 def home(request):
+    uobj=userProfile.objects.get(username=request.user)
+   
     cat=Category.objects.all()
     products=Product.objects.all()
     
@@ -41,8 +86,8 @@ def home(request):
 
 
 
-        return render(request,"searchResult.html",{'cat':cat,'products':p})
-            
+    return render(request, "welcomeseller.html",{'uobj':uobj,'cat':cat,'products':products})
+       
 
 
     return render(request,"welcomeseller.html",{'cat':cat,'products':products})
