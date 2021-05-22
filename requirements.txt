@@ -21,3 +21,4 @@ virtualenv==20.4.3
 whitenoise==5.2.0
 wrapt==1.12.1
 zipp==3.4.1
+streamlit
